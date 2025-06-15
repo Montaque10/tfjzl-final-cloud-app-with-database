@@ -19,8 +19,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # Changed from 'onlinecourse/' to '' to make it accessible at root
+    # Support both root and /onlinecourse/ paths
     path('', include('onlinecourse.urls')),
-    # You can also keep the old path if you want both to work
-    # path('onlinecourse/', include('onlinecourse.urls')),
+    path('onlinecourse/', include('onlinecourse.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
